@@ -1,10 +1,48 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f1f1f1;
+  padding: 10px;
+  background-color: #1e1e1e;
+  min-height: 5vh;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.config button {
+  background: none;
+  border: none;
+  font-size: inherit;
+  font-family: inherit;
+  color: white;
+  text-decoration: wavy;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+
+  .config {
+    margin-top: 10px;
+  }
+}
+
 .main {
+  background-color: #1e1e1e;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem;
-  min-height: 100vh;
+  min-height: 95vh;
 }
 
 .description {
@@ -104,9 +142,6 @@
   transform: translateZ(0);
 }
 
-.logo {
-  position: relative;
-}
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
@@ -218,6 +253,8 @@
     filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
   }
 }
+
+
 
 @keyframes rotate {
   from {
