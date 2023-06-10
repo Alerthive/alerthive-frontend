@@ -34,8 +34,8 @@ const DynamicMap: React.FC = () => {
     <div
       style={{
         width: "60%",
-        height: "400px",
-        border: "10px solid #000000",
+        height: "300px",
+        border: "5px solid #000000",
       }}
     >
       <div ref={mapContainerRef} style={{ width: "100%", height: "100%" }} />
