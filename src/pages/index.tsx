@@ -5,7 +5,7 @@ import darkTheme from "@theme/darkTheme";
 import lightTheme from "@theme/lightTheme";
 import Header from "@components/Navbar";
 import Layout from "Layout/Layout";
-import Map from "./Dashboard/Map";
+import Map from "@components/DynamicMap";
 import Styles from "@styles/Home.module.scss";
 
 const ColorModeContext = React.createContext({
