@@ -41,7 +41,7 @@ const Home = () => {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider
-        theme={mode === "dark" ? darkThemeChosen : lightThemeChosen}
+        theme={mode === "light" ? darkThemeChosen : lightThemeChosen}
       >
         <CssBaseline />
         <Header ColorModeContext={ColorModeContext} />
