@@ -35,7 +35,26 @@ Sigue los pasos a continuación para instalar las dependencias y ejecutar el pro
     npm install
     ```
 
-4. Ejecuta el proyecto
+4. Debe contenedor un archivo Dockerfile en la raiz
+
+Este archivo debe contener los siguientes parametros
+
+```bash
+FROM node:alpine
+RUN apk update
+ENV TZ=America/Santiago
+WORKDIR /app
+COPY package.json .
+COPY package-lock.json .
+RUN npm install
+COPY . .
+EXPOSE 3001
+ENTRYPOINT ["npm", "run", "dev"]
+```
+
+los valores designados, son de caracter subjetivo, y se ajustan segun como se pretenda ejecutar o que deba contener el proyecto.
+
+5. Ejecuta el proyecto
 
     ```bash
     npm run dev
