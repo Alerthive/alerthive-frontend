@@ -1,6 +1,6 @@
 'use client';
 
-import { Map, Marker, Popup } from 'react-map-gl';
+import { Marker, Popup } from 'react-map-gl';
 import { Emergency } from '../../../lib/types/emergency';
 import { Button, Text } from '@tremor/react';
 import { LinkIcon } from '@heroicons/react/24/outline';

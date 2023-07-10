@@ -3,7 +3,6 @@
 import { Card, Title, Text, Callout } from '@tremor/react';
 import { Emergency } from '../../../lib/types/emergency';
 import { ExclamationTriangleIcon, LinkIcon } from '@heroicons/react/24/outline';
-import { useState } from 'react';
 import { useMap } from 'react-map-gl';
 
 export default function RecentEmergenciesComponent({
@@ -17,30 +16,29 @@ export default function RecentEmergenciesComponent({
 }) {
   const { emergencyMap } = useMap();
 
+  const handleCalloutClick = (emergency: Emergency) => {
+    emergencyMap.flyTo({
+      center: [emergency.longitude, emergency.latitude]
+    });
+    setSelectedEmergency(emergency);
+    setShowPopup(true);
+  };
+
   return (
     <Card className='h-96 overflow-auto'>
       <Title>Emergencias recientes</Title>
       <Text>Accede a la publicación</Text>
 
       {emergencies.map((emergency) => (
-        <Callout
-          key={emergency.id}
-          className="mt-4 cursor-pointer hover:bg-amber-100"
-          icon={ExclamationTriangleIcon}
-          title=""
-          color="amber"
-          onClick={() => {
-            emergencyMap.flyTo({
-              center: [emergency.longitude, emergency.latitude]
-            });
-            setSelectedEmergency(emergency);
-            setShowPopup(true);
-          }}
-        >
-          {/* FIXME: Hydration failed because the initial UI does not match what was rendered on the server. */}
-          {/* Este div dentro de Callout está muy posiblemente causando el error al no poder tener elementos <div> en su contenido, ocurre lo mismo con el componente Flex de tremor */}
-          <div className="flex justify-between">
-            {emergency.full_text}
+        <div key={emergency.id} className="mt-4 cursor-pointer hover:bg-amber-100">
+          <Callout
+            className="flex justify-between items-center"
+            icon={ExclamationTriangleIcon}
+            title=""
+            color="amber"
+            onClick={() => handleCalloutClick(emergency)}
+          >
+            <span>{emergency.full_text}</span>
             <a
               href={`https://twitter.com/bomberostemuco/status/${emergency.id}`}
               target="_blank"
@@ -50,8 +48,8 @@ export default function RecentEmergenciesComponent({
             >
               <LinkIcon className="h-6 w-6 text-blue-500" />
             </a>
-          </div>
-        </Callout>
+          </Callout>
+        </div>
       ))}
     </Card>
   );

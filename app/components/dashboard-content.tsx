@@ -1,14 +1,14 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { Emergency } from '../../lib/types/emergency';
 import EmergencyMapComponent from './dashboard/emergency-map';
-import { Card, Flex, Title, Text, Col, Grid } from '@tremor/react';
+import { Card, Flex, Text, Col } from '@tremor/react';
 import Chart from './dashboard/chart';
 import DonutChartComponent from './dashboard/donut-chart';
 import GridComponent from './dashboard/grid-components';
 import RecentEmergenciesComponent from './dashboard/recent-emergencies';
-import { Map, MapProvider, useMap } from 'react-map-gl';
+import { Map, MapProvider } from 'react-map-gl';
 
 export default function DasboardContentComponent({
   emergencies
